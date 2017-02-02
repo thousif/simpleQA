@@ -31,3 +31,13 @@ body{
 	color: #7d7d7d;
 	margin-bottom: 5px;
 }
+
+.app__container_main{
+	position: relative;
+}
+
+.app__container_start{
+	position: absolute;
+	left: 32%;
+	top: 80px;
+}
