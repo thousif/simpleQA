@@ -1,6 +1,7 @@
 # simpleQA
 A simple question answer application
 
+# Do not take this seriously
 
 # description
 

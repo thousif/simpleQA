@@ -1,0 +1,33 @@
+body{
+  background: #ebebeb;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  margin: 0 100px 100px 100px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeSpeed;
+}
+
+.app__container{
+	margin-top: 100px;
+	min-height: 400px;
+	padding: 3px; 
+	background: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.app__container_header{
+	text-align: center;
+}
+
+.app__container_header h3{
+	color:#dd5555;
+	margin-bottom: 5px;
+}
+
+.app__container_header p{
+	color: #7d7d7d;
+	margin-bottom: 5px;
+}
