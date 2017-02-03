@@ -57,7 +57,19 @@ app.factory('store',function(){
 	var storeScore = function(index,score){
 		scoreCard[index] = score;
 	}
+	
+	var	isEmpty = function(obj) {
+	    for(var prop in obj) {
+	        if(obj.hasOwnProperty(prop))
+	            return false;
+	    }
+		return JSON.stringify(obj) === JSON.stringify({});
+	}
+
 	var getScoreCard = function(){
+		if(isEmpty(scoreCard)){
+			return false;
+		}
 		return scoreCard;
 	}
 	var getQuestions = function(){
@@ -100,12 +112,92 @@ app.controller('gameCtrl',function($scope,$stateParams,$state,$timeout,store){
 
 });
 
-app.controller('resultCtrl',function($scope,$timeout,store){
+app.controller('resultCtrl',function($scope,$timeout,store,$state){
 	$scope.showResultsBtn = true;
 	$scope.showResults = function(){
 		$timeout(function() {
 			$scope.showResultsBtn = false;	
 		}, 500);
 	}
+	$scope.xAxis = 'Marks';    
+    $scope.yAxis = 'Questions';
+    $scope.points = [];
+
+    $scope.questions = store.getQuestions();
+    $scope.userAnswers = store.getScoreCard();
+
+    console.log($scope.userAnswers);
+    if(!$scope.userAnswers){
+    	$state.go('start');
+    } else {
+    	for(var i=0;i<$scope.questions.length;i++){
+	    	var q;
+	    	if($scope.userAnswers[i] == $scope.questions[i].correct){
+	    		q = {
+	    			label  : 'Question :' + (i+1), 
+	    			xValue : 10,
+	    			yValue : i+1
+	    		}
+	    		$scope.points.push(q);
+	    	} else {
+	    		q = {
+	    			label  : 'Question :' + (i+1), 
+	    			xValue : 1,
+	    			yValue : i+1
+	    		}
+	    		$scope.points.push(q);
+	    	}
+
+	    }
+	    console.log($scope.points);	
+    }
+    // if($scope.userAnswers)
+
+    
+
+    // $scope.points = [
+    //   {
+    //   label: 'Question',
+    //   yValue: 10,
+    //   xValue: 10
+    //   },
+    //   {
+    //   label: 'Question',
+    //   yValue: 20,
+    //   xValue: 1
+    //   },
+    //   {
+    //   label: 'Question',
+    //   yValue: 30,
+    //   xValue: 10
+    //   },
+    //   {
+    //   label: 'Question',
+    //   yValue: 40,
+    //   xValue: 1
+    //   },
+    //   {
+    //   label: 'Question',
+    //   yValue: 50,
+    //   xValue: 1
+    //   }, 
+    // ];
+
+
+    
+    // Find Maximum X & Y Axis Values - this is used to position the points as a percentage of the maximum
+    $scope.maxX = 10;
+    $scope.maxY = 0;
+    
+    var arrLength = $scope.points.length;
+    for (var i = 0; i < arrLength; i++) {
+        // Find Maximum X Axis Value
+      	if ($scope.points[i].xValue > $scope.maxX)
+        $scope.maxX = $scope.points[i].xValue;
+      	// Find Maximum Y Axis Value
+      	if ($scope.points[i].yValue > $scope.maxY)
+        $scope.maxY = $scope.points[i].yValue;
+    }
+
 });		
 

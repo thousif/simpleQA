@@ -2,7 +2,7 @@
 	<h3>{{current.q}}</h3>
 	<ul class="game_ul">
 		<li class="game_ul_li" ng-repeat="option in current.options">
-			<button ng-click="next(option)" style="min-width: 150px;background-color: #e4fdc8;" class="r-raised ripple-cont ripple" r-color="#8BC34A" r-opacity=".6"><div class="ripple-content">
+			<button ng-click="next($index)" style="min-width: 150px;background-color: #e4fdc8;" class="r-raised ripple-cont ripple" r-color="#8BC34A" r-opacity=".6"><div class="ripple-content">
 					{{option}}
 				</div><div class="ink-content"></div>
 			</button>		

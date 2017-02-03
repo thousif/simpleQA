@@ -7,5 +7,9 @@
 	</button>
 </div>
 <div ng-hide="showResultsBtn">
-graph here
+  <div class="graph">
+    <div class="x">{{xAxis}}</div>
+    <div class="y">{{yAxis}}</div>
+    <div class="dot" ng-repeat="point in points" style="bottom:calc({{point.xValue}}/{{maxX}}*100% - 15px); left:calc({{point.yValue}}/{{maxY}}*100% - 15px);" data-title="{{point.label}}"></div>
+  </div>
 </div>

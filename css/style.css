@@ -240,3 +240,88 @@ body{
     -moz-transform:scale(1);
     transform:scale(1);
 }
+
+.graph {
+  position: relative;
+  margin: 50px auto;
+  width: 70%;
+  height: 250px;
+  background: #D9F2E6;
+}
+.x {
+  font-weight: bold;
+  border-bottom: 1px solid #71CBD0;
+  position: absolute;
+  width: 250px;
+  text-align: center;
+  padding: 10px;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+  bottom: 0;
+  color: #D07371;
+}
+.y {
+  font-weight: bold;
+  border-top: 1px solid #71CBD0;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  top: 100%;
+  color: #D07371;
+}
+.dot {
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  background: #71CBD0;
+  cursor: pointer;
+  -webkit-animation: dots 1.5s ease;
+          animation: dots 1.5s ease;
+}
+.dot:after {
+  content: attr(data-title);
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  background: #D07371;
+  color: white;
+  position: absolute;
+  padding: 10px;
+  left: 150%;
+  top: -15px;
+  width: 0;
+  opacity: 0;
+  border-radius: 3px;
+}
+.dot:hover {
+  background: #D07371;
+}
+.dot:hover:after {
+  width: auto;
+  opacity: 1;
+  z-index: 9999;
+}
+@-webkit-keyframes dots {
+  0% {
+    bottom: 0;
+    opacity: 0;
+  }
+  33% {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+@keyframes dots {
+  0% {
+    bottom: 0;
+    opacity: 0;
+  }
+  33% {
+    bottom: 0;
+    opacity: 1;
+  }
+}
