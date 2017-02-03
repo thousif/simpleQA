@@ -56,6 +56,17 @@ body{
 	margin: 5px 0;
 }
 
+.game_index_ul{
+	list-style-type: none;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;	
+}
+
+.game_ul_index_li{
+	display: inline-block;
+}
+
 .ripple-cont{
 	position: relative;
 	display: inline-block;
@@ -240,19 +251,30 @@ body{
     -moz-transform:scale(1);
     transform:scale(1);
 }
+.graph-bottom {
+	text-align: center;
+}
+
+.graph-bottom span{
+	background-color: #dd5555;
+    border-radius: 50%;
+    padding: 10px;
+    color: #fff;
+    margin: 0 7px;
+}
 
 .graph {
   position: relative;
   margin: 50px auto;
   width: 70%;
-  height: 250px;
+  height: 150px;
   background: #D9F2E6;
 }
 .x {
   font-weight: bold;
   border-bottom: 1px solid #71CBD0;
   position: absolute;
-  width: 250px;
+  width: 150px;
   text-align: center;
   padding: 10px;
   -webkit-transform: rotate(-90deg);

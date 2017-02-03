@@ -12,4 +12,10 @@
     <div class="y">{{yAxis}}</div>
     <div class="dot" ng-repeat="point in points" style="bottom:calc({{point.xValue}}/{{maxX}}*100% - 15px); left:calc({{point.yValue}}/{{maxY}}*100% - 15px);" data-title="{{point.label}}"></div>
   </div>
+  <div class="graph-bottom">
+  	<h3>Your Score<span>{{score}}</span></h3>
+  	<h2 style="margin: 40px 0;"><span ui-sref="start"><i style="padding: 0 6px;cursor: pointer;" class="icon ion-android-home"></i></span>
+  	<span ui-sref="gameon({q : 0})"><i style="padding: 0 6px;cursor: pointer;" class="icon ion-android-refresh"></i></span>
+  	</h2>
+  </div>
 </div>

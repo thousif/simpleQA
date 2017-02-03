@@ -1,4 +1,9 @@
 <div class="app__container_game">
+	<ul class="game_index_ul" style="margin-top: -15px;">
+		<li class="game_ul_index_li" style="color: #a5a3a3">{{q.prev}}</li>
+		<li class="game_ul_index_li">{{q.curr}}</li>
+		<li class="game_ul_index_li" style="color: #a5a3a3">{{q.next}}</li>
+	</ul>
 	<h3>{{current.q}}</h3>
 	<ul class="game_ul">
 		<li class="game_ul_li" ng-repeat="option in current.options">

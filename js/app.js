@@ -91,6 +91,19 @@ app.controller('gameCtrl',function($scope,$stateParams,$state,$timeout,store){
 	}
 
 	$scope.questions = store.getQuestions();
+	$scope.q = {};
+	$scope.q.curr = parseInt($stateParams.q, 10) + 1;
+	$scope.q.next = parseInt($scope.q.curr, 10) + 1;
+	if($scope.q.curr < 2){
+		$scope.q.prev = "";	
+	} else if($scope.q.curr == $scope.questions.length) {
+		$scope.q.next = "";
+		$scope.q.prev = $scope.q.curr - 1;
+	} else {
+		$scope.q.next = $scope.q.curr + 1;
+		$scope.q.prev = $scope.q.curr - 1;	
+	}
+	
 	$scope.index = $stateParams.q;
 	$scope.current = $scope.questions[$scope.index];
 	$scope.selectedAns = {};
@@ -125,14 +138,17 @@ app.controller('resultCtrl',function($scope,$timeout,store,$state){
 
     $scope.questions = store.getQuestions();
     $scope.userAnswers = store.getScoreCard();
+    $scope.score = 0;
 
     console.log($scope.userAnswers);
     if(!$scope.userAnswers){
     	$state.go('start');
     } else {
     	for(var i=0;i<$scope.questions.length;i++){
-	    	var q;
+	    	var q;    	
 	    	if($scope.userAnswers[i] == $scope.questions[i].correct){
+	    		$scope.score += 10;
+	    		console.log($scope.score);
 	    		q = {
 	    			label  : 'Question :' + (i+1), 
 	    			xValue : 10,
@@ -147,42 +163,8 @@ app.controller('resultCtrl',function($scope,$timeout,store,$state){
 	    		}
 	    		$scope.points.push(q);
 	    	}
-
 	    }
-	    console.log($scope.points);	
     }
-    // if($scope.userAnswers)
-
-    
-
-    // $scope.points = [
-    //   {
-    //   label: 'Question',
-    //   yValue: 10,
-    //   xValue: 10
-    //   },
-    //   {
-    //   label: 'Question',
-    //   yValue: 20,
-    //   xValue: 1
-    //   },
-    //   {
-    //   label: 'Question',
-    //   yValue: 30,
-    //   xValue: 10
-    //   },
-    //   {
-    //   label: 'Question',
-    //   yValue: 40,
-    //   xValue: 1
-    //   },
-    //   {
-    //   label: 'Question',
-    //   yValue: 50,
-    //   xValue: 1
-    //   }, 
-    // ];
-
 
     
     // Find Maximum X & Y Axis Values - this is used to position the points as a percentage of the maximum
