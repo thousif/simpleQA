@@ -34,24 +34,24 @@ app.controller('mainCtrl',function($scope,$stateParams){
 app.factory('store',function(){
 	var scoreCard = {};
 	var questions = [{
-		q : "select one!",
-		options : ["1","2","3","4"],
+		q : "which planet are you from ?",
+		options : ["Earth","Mars","Pluto","Mercury"],
 		correct : 0
 	},{
-		q : "select two!",
-		options : ["1","2","3","4"],
+		q : "which one is a star ?",
+		options : ["milkyway","sun","earth","saturn"],
 		correct : 1
 	},{
-		q : "select three!",
-		options : ["1","2","3","4"],
-		correct : 2
-	},{
-		q : "select four!",
-		options : ["1","2","3","4"],
+		q : "Whats the atomic number of helium ? ",
+		options : ["1","4","16","2"],
 		correct : 3
 	},{
-		q : "select five!",
-		options : ["1","2","3","5"],
+		q : "India is in which continent ?",
+		options : ["Australia","Europe","Asia","Africa"],
+		correct : 2
+	},{
+		q : "how many hours are their in a day?",
+		options : ["36","16","18","24"],
 		correct : 3
 	}];
 	var storeScore = function(index,score){
