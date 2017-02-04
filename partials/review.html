@@ -1,0 +1,23 @@
+<div class="app__container_review">
+	<div class="form-inline">
+	<div class="form-group">
+	  <label for="sel1">Select Question :</label>
+	  <select ng-model="question.index" ng-change="showQuestion()" class="form-control" id="sel1">
+	    <option>1</option>
+	    <option>2</option>
+	    <option>3</option>
+	    <option>4</option>
+	    <option>5</option>
+	  </select>
+	</div>
+	<div class="review_content" >
+		<h4>{{question.body}}</h4>
+		<ul>
+			<li ng-repeat="option in question.options">{{option}}
+			<span ng-if="$index != question.correct" ><i ng-if="scores[$index] != $index" class="icon ion-ios-circle-filled wrong-icon"></i></span>
+			<span ng-if="$index == question.correct"><i class="icon ion-ios-checkmark correct-icon"></i></span>
+			</li>
+		</ul>
+	</div>
+	</div>	
+</div>

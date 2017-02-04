@@ -347,3 +347,26 @@ body{
     opacity: 1;
   }
 }
+
+.app__container_review{
+	text-align: center;
+}
+
+.review_content{
+	text-align: left;
+	padding: 15px;
+}
+
+.review_content li{
+	padding: 5px 0;
+}
+
+.correct-icon{
+	color: #69de69;
+    font-size: 22px;
+}
+
+.wrong-icon{
+	color: #dd5555;
+    font-size: 22px;
+}

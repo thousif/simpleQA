@@ -18,6 +18,11 @@ app.config(function($stateProvider, $urlRouterProvider){
         url:'/result',
         templateUrl :'partials/result.html',
         controller:'resultCtrl'
+      })
+      .state('review',{
+      	url:'/review',
+      	templateUrl:'partials/review.html',
+      	controller:'reviewCtrl'
       });
 });
     
@@ -33,6 +38,7 @@ app.controller('mainCtrl',function($scope,$stateParams){
 
 app.factory('store',function(){
 	var scoreCard = {};
+	
 	var questions = [{
 		q : "which planet are you from ?",
 		options : ["Earth","Mars","Pluto","Mercury"],
@@ -50,10 +56,11 @@ app.factory('store',function(){
 		options : ["Australia","Europe","Asia","Africa"],
 		correct : 2
 	},{
-		q : "how many hours are their in a day?",
+		q : "how many hours are there in a day?",
 		options : ["36","16","18","24"],
 		correct : 3
 	}];
+	
 	var storeScore = function(index,score){
 		scoreCard[index] = score;
 	}
@@ -72,9 +79,11 @@ app.factory('store',function(){
 		}
 		return scoreCard;
 	}
+	
 	var getQuestions = function(){
 		return questions;
 	}
+	
 	return{
 		storeScore : storeScore,
 		getQuestions : getQuestions,
@@ -143,7 +152,7 @@ app.controller('resultCtrl',function($scope,$timeout,store,$state){
 
     console.log($scope.userAnswers);
     if(!$scope.userAnswers){
-    	$state.go('start');
+    	// $state.go('start');
     } else {
     	for(var i=0;i<$scope.questions.length;i++){
 	    	var q;    	
@@ -184,3 +193,31 @@ app.controller('resultCtrl',function($scope,$timeout,store,$state){
 
 });		
 
+app.controller('reviewCtrl',function($scope,store){
+	$scope.question = {};
+	$scope.questions = store.getQuestions();
+	$scope.scores = store.getScoreCard();
+
+	$scope.options = [];
+	
+	for(var i=1;i<$scope.questions.length;i++){
+		$scope.options.push(i);
+	}
+
+	$scope.init = function(){
+		$scope.question.index = "1";	
+		$scope.question.body = $scope.questions[$scope.question.index-1].q;
+		$scope.question.options = $scope.questions[$scope.question.index-1].options;
+		$scope.question.correct = $scope.questions[$scope.question.index-1].correct;
+	}
+
+	$scope.showQuestion = function(){
+		$scope.question.body = $scope.questions[$scope.question.index-1].q;
+		$scope.question.options = $scope.questions[$scope.question.index-1].options;
+		$scope.question.correct = $scope.questions[$scope.question.index-1].correct;
+		console.log($scope.question); 
+	}
+
+	$scope.init();
+
+});
