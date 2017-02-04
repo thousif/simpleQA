@@ -33,7 +33,7 @@ app.run(['rippleConfig', function(rippleConfig){
 }]);
 
 app.controller('mainCtrl',function($scope,$stateParams){
-	console.log("you are in the js now");
+	// console.log("you are in the js now");
 });
 
 app.factory('store',function(){
@@ -92,12 +92,7 @@ app.factory('store',function(){
 })
 
 app.controller('gameCtrl',function($scope,$stateParams,$state,$timeout,store){
-	console.log("you are in the js now"); 
-
-	$scope.start = function(){
-		$scope.stateOne = false;		
-		console.log("lets start the code here");
-	}
+	// console.log("you are in the js now"); 
 
 	$scope.questions = store.getQuestions();
 	$scope.q = {};
@@ -130,7 +125,7 @@ app.controller('gameCtrl',function($scope,$stateParams,$state,$timeout,store){
 		$timeout(function(){
 			$state.go('gameon',{'q':$scope.index});	
 		},500);
-		console.log(store.getScoreCard());
+		// console.log(store.getScoreCard());
 	}
 
 });
@@ -150,7 +145,7 @@ app.controller('resultCtrl',function($scope,$timeout,store,$state){
     $scope.userAnswers = store.getScoreCard();
     $scope.score = 0;
 
-    console.log($scope.userAnswers);
+    // console.log($scope.userAnswers);
     if(!$scope.userAnswers){
     	$state.go('start');
     } else {
@@ -158,7 +153,7 @@ app.controller('resultCtrl',function($scope,$timeout,store,$state){
 	    	var q;    	
 	    	if($scope.userAnswers[i] == $scope.questions[i].correct){
 	    		$scope.score += 10;
-	    		console.log($scope.score);
+	    		// console.log($scope.score);
 	    		q = {
 	    			label  : 'Question :' + (i+1), 
 	    			xValue : 10,
@@ -220,7 +215,7 @@ app.controller('reviewCtrl',function($scope,store,$state){
 		$scope.question.body = $scope.questions[$scope.question.index-1].q;
 		$scope.question.options = $scope.questions[$scope.question.index-1].options;
 		$scope.question.correct = $scope.questions[$scope.question.index-1].correct;
-		console.log($scope.question); 
+		// console.log($scope.question); 
 	}
 
 	$scope.init();
