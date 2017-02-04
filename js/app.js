@@ -152,7 +152,7 @@ app.controller('resultCtrl',function($scope,$timeout,store,$state){
 
     console.log($scope.userAnswers);
     if(!$scope.userAnswers){
-    	// $state.go('start');
+    	$state.go('start');
     } else {
     	for(var i=0;i<$scope.questions.length;i++){
 	    	var q;    	
@@ -193,10 +193,15 @@ app.controller('resultCtrl',function($scope,$timeout,store,$state){
 
 });		
 
-app.controller('reviewCtrl',function($scope,store){
+app.controller('reviewCtrl',function($scope,store,$state){
 	$scope.question = {};
 	$scope.questions = store.getQuestions();
 	$scope.scores = store.getScoreCard();
+
+	if(!$scope.scores){
+		$state.go('start');
+		return;
+	}
 
 	$scope.options = [];
 	
