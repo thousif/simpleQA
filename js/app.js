@@ -108,9 +108,10 @@ app.controller('gameCtrl',function($scope,$stateParams,$state,$timeout,store){
 	$scope.current = $scope.questions[$scope.index];
 	$scope.selectedAns = {};
 	$scope.showResults = false;
+	$scope.disable = false;
 
 	$scope.next = function(option){
-		console.log(option);
+		$scope.disable = true;
 		store.storeScore($scope.index,option);
 		$scope.index++;
 		if(!$scope.questions[$scope.index]){
